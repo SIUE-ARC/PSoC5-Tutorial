@@ -1,0 +1,769 @@
+ARM GAS  C:\Users\LAIR\AppData\Local\Temp\ccTGb53m.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"main.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.section	.text.main,"ax",%progbits
+  19              		.align	2
+  20              		.global	main
+  21              		.thumb
+  22              		.thumb_func
+  23              		.type	main, %function
+  24              	main:
+  25              	.LFB63:
+  26              		.file 1 ".\\main.c"
+   1:.\main.c      **** /* ========================================
+   2:.\main.c      ****  *
+   3:.\main.c      ****  * Copyright YOUR COMPANY, THE YEAR
+   4:.\main.c      ****  * All Rights Reserved
+   5:.\main.c      ****  * UNPUBLISHED, LICENSED SOFTWARE.
+   6:.\main.c      ****  *
+   7:.\main.c      ****  * CONFIDENTIAL AND PROPRIETARY INFORMATION
+   8:.\main.c      ****  * WHICH IS THE PROPERTY OF your company.
+   9:.\main.c      ****  *
+  10:.\main.c      ****  * ========================================
+  11:.\main.c      **** */
+  12:.\main.c      **** #include <project.h>
+  13:.\main.c      **** 
+  14:.\main.c      **** #define HIGH 1
+  15:.\main.c      **** #define LOW 0
+  16:.\main.c      **** 
+  17:.\main.c      **** void digitalWrite(char val);
+  18:.\main.c      **** 
+  19:.\main.c      **** int i;
+  20:.\main.c      **** 
+  21:.\main.c      **** int main()
+  22:.\main.c      **** {
+  27              		.loc 1 22 0
+  28              		.cfi_startproc
+  29              		@ Volatile: function does not return.
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32 0000 08B5     		push	{r3, lr}
+  33              		.cfi_def_cfa_offset 8
+  34              		.cfi_offset 3, -8
+  35              		.cfi_offset 14, -4
+ARM GAS  C:\Users\LAIR\AppData\Local\Temp\ccTGb53m.s 			page 2
+
+
+  23:.\main.c      ****     CyGlobalIntEnable; /* Enable global interrupts. */
+  36              		.loc 1 23 0
+  37              	@ 23 ".\main.c" 1
+  38 0002 62B6     		CPSIE   i
+  39              	@ 0 "" 2
+  24:.\main.c      ****     
+  25:.\main.c      ****     PWM_Start();
+  40              		.loc 1 25 0
+  41              		.thumb
+  42 0004 FFF7FEFF 		bl	PWM_Start
+  43              	.LVL0:
+  44              	.L4:
+  26:.\main.c      ****     
+  27:.\main.c      **** 
+  28:.\main.c      ****     /* Place your initialization/startup code here (e.g. MyInst_Start()) */
+  29:.\main.c      **** 
+  30:.\main.c      ****     for(;;)
+  31:.\main.c      ****     {
+  32:.\main.c      ****         /* Place your application code here. */
+  33:.\main.c      ****         //digitalWrite(HIGH);
+  34:.\main.c      ****         //for(i = 0; i < 1000000; i++);
+  35:.\main.c      ****         //digitalWrite(LOW);
+  36:.\main.c      ****         //for(i = 0; i < 1000000; i++);
+  37:.\main.c      ****         for(i = 0; i < 5000000; i++);
+  45              		.loc 1 37 0
+  46 0008 0022     		movs	r2, #0
+  47 000a 074B     		ldr	r3, .L6
+  48 000c 1A60     		str	r2, [r3]
+  49 000e 02E0     		b	.L2
+  50              	.L3:
+  51              		.loc 1 37 0 is_stmt 0 discriminator 3
+  52 0010 0133     		adds	r3, r3, #1
+  53 0012 054A     		ldr	r2, .L6
+  54 0014 1360     		str	r3, [r2]
+  55              	.L2:
+  56              		.loc 1 37 0 discriminator 1
+  57 0016 044B     		ldr	r3, .L6
+  58 0018 1B68     		ldr	r3, [r3]
+  59 001a 044A     		ldr	r2, .L6+4
+  60 001c 9342     		cmp	r3, r2
+  61 001e F7DD     		ble	.L3
+  38:.\main.c      ****         PWM_WriteCompare(209);
+  62              		.loc 1 38 0 is_stmt 1
+  63 0020 D120     		movs	r0, #209
+  64 0022 FFF7FEFF 		bl	PWM_WriteCompare
+  65              	.LVL1:
+  39:.\main.c      ****     }
+  66              		.loc 1 39 0
+  67 0026 EFE7     		b	.L4
+  68              	.L7:
+  69              		.align	2
+  70              	.L6:
+  71 0028 00000000 		.word	i
+  72 002c 3F4B4C00 		.word	4999999
+  73              		.cfi_endproc
+  74              	.LFE63:
+  75              		.size	main, .-main
+ARM GAS  C:\Users\LAIR\AppData\Local\Temp\ccTGb53m.s 			page 3
+
+
+  76              		.section	.text.digitalWrite,"ax",%progbits
+  77              		.align	2
+  78              		.global	digitalWrite
+  79              		.thumb
+  80              		.thumb_func
+  81              		.type	digitalWrite, %function
+  82              	digitalWrite:
+  83              	.LFB64:
+  40:.\main.c      **** }
+  41:.\main.c      **** 
+  42:.\main.c      **** /* [] END OF FILE */
+  43:.\main.c      **** 
+  44:.\main.c      **** void digitalWrite(char val)
+  45:.\main.c      **** {
+  84              		.loc 1 45 0
+  85              		.cfi_startproc
+  86              		@ args = 0, pretend = 0, frame = 0
+  87              		@ frame_needed = 0, uses_anonymous_args = 0
+  88              		@ link register save eliminated.
+  89              	.LVL2:
+  46:.\main.c      ****     if(val == HIGH)
+  90              		.loc 1 46 0
+  91 0000 0128     		cmp	r0, #1
+  92 0002 05D1     		bne	.L9
+  47:.\main.c      ****         LED_DR |= LED_MASK;
+  93              		.loc 1 47 0
+  94 0004 064A     		ldr	r2, .L11
+  95 0006 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+  96 0008 43F00203 		orr	r3, r3, #2
+  97 000c 1370     		strb	r3, [r2]
+  98 000e 7047     		bx	lr
+  99              	.L9:
+  48:.\main.c      ****     else if(val == LOW)
+ 100              		.loc 1 48 0
+ 101 0010 20B9     		cbnz	r0, .L8
+  49:.\main.c      ****         LED_DR &= ~LED_MASK;
+ 102              		.loc 1 49 0
+ 103 0012 034A     		ldr	r2, .L11
+ 104 0014 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+ 105 0016 03F0FD03 		and	r3, r3, #253
+ 106 001a 1370     		strb	r3, [r2]
+ 107              	.L8:
+ 108 001c 7047     		bx	lr
+ 109              	.L12:
+ 110 001e 00BF     		.align	2
+ 111              	.L11:
+ 112 0020 20510040 		.word	1073762592
+ 113              		.cfi_endproc
+ 114              	.LFE64:
+ 115              		.size	digitalWrite, .-digitalWrite
+ 116              		.comm	i,4,4
+ 117              		.text
+ 118              	.Letext0:
+ 119              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\3.3\\psoc creator\\import\\gnu\\arm\\4.9.
+ 120              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\3.3\\psoc creator\\import\\gnu\\arm\\4.9.
+ 121              		.file 4 "Generated_Source\\PSoC5/cytypes.h"
+ 122              		.file 5 "Generated_Source\\PSoC5/core_cm3.h"
+ARM GAS  C:\Users\LAIR\AppData\Local\Temp\ccTGb53m.s 			page 4
+
+
+ 123              		.file 6 "Generated_Source\\PSoC5/PWM.h"
+ 124              		.section	.debug_info,"",%progbits
+ 125              	.Ldebug_info0:
+ 126 0000 41010000 		.4byte	0x141
+ 127 0004 0400     		.2byte	0x4
+ 128 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 129 000a 04       		.byte	0x4
+ 130 000b 01       		.uleb128 0x1
+ 131 000c 86000000 		.4byte	.LASF20
+ 132 0010 01       		.byte	0x1
+ 133 0011 60000000 		.4byte	.LASF21
+ 134 0015 2C010000 		.4byte	.LASF22
+ 135 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 136 001d 00000000 		.4byte	0
+ 137 0021 00000000 		.4byte	.Ldebug_line0
+ 138 0025 02       		.uleb128 0x2
+ 139 0026 01       		.byte	0x1
+ 140 0027 06       		.byte	0x6
+ 141 0028 86010000 		.4byte	.LASF0
+ 142 002c 02       		.uleb128 0x2
+ 143 002d 01       		.byte	0x1
+ 144 002e 08       		.byte	0x8
+ 145 002f 14010000 		.4byte	.LASF1
+ 146 0033 02       		.uleb128 0x2
+ 147 0034 02       		.byte	0x2
+ 148 0035 05       		.byte	0x5
+ 149 0036 A6010000 		.4byte	.LASF2
+ 150 003a 02       		.uleb128 0x2
+ 151 003b 02       		.byte	0x2
+ 152 003c 07       		.byte	0x7
+ 153 003d 0E000000 		.4byte	.LASF3
+ 154 0041 03       		.uleb128 0x3
+ 155 0042 92010000 		.4byte	.LASF9
+ 156 0046 02       		.byte	0x2
+ 157 0047 3F       		.byte	0x3f
+ 158 0048 4C000000 		.4byte	0x4c
+ 159 004c 02       		.uleb128 0x2
+ 160 004d 04       		.byte	0x4
+ 161 004e 05       		.byte	0x5
+ 162 004f 70010000 		.4byte	.LASF4
+ 163 0053 02       		.uleb128 0x2
+ 164 0054 04       		.byte	0x4
+ 165 0055 07       		.byte	0x7
+ 166 0056 4E000000 		.4byte	.LASF5
+ 167 005a 02       		.uleb128 0x2
+ 168 005b 08       		.byte	0x8
+ 169 005c 05       		.byte	0x5
+ 170 005d 00000000 		.4byte	.LASF6
+ 171 0061 02       		.uleb128 0x2
+ 172 0062 08       		.byte	0x8
+ 173 0063 07       		.byte	0x7
+ 174 0064 69000000 		.4byte	.LASF7
+ 175 0068 04       		.uleb128 0x4
+ 176 0069 04       		.byte	0x4
+ 177 006a 05       		.byte	0x5
+ 178 006b 696E7400 		.ascii	"int\000"
+ 179 006f 02       		.uleb128 0x2
+ARM GAS  C:\Users\LAIR\AppData\Local\Temp\ccTGb53m.s 			page 5
+
+
+ 180 0070 04       		.byte	0x4
+ 181 0071 07       		.byte	0x7
+ 182 0072 21000000 		.4byte	.LASF8
+ 183 0076 03       		.uleb128 0x3
+ 184 0077 46000000 		.4byte	.LASF10
+ 185 007b 03       		.byte	0x3
+ 186 007c 2C       		.byte	0x2c
+ 187 007d 41000000 		.4byte	0x41
+ 188 0081 05       		.uleb128 0x5
+ 189 0082 40000000 		.4byte	.LASF11
+ 190 0086 04       		.byte	0x4
+ 191 0087 9201     		.2byte	0x192
+ 192 0089 2C000000 		.4byte	0x2c
+ 193 008d 02       		.uleb128 0x2
+ 194 008e 04       		.byte	0x4
+ 195 008f 04       		.byte	0x4
+ 196 0090 80000000 		.4byte	.LASF12
+ 197 0094 02       		.uleb128 0x2
+ 198 0095 08       		.byte	0x8
+ 199 0096 04       		.byte	0x4
+ 200 0097 69010000 		.4byte	.LASF13
+ 201 009b 02       		.uleb128 0x2
+ 202 009c 01       		.byte	0x1
+ 203 009d 08       		.byte	0x8
+ 204 009e 22010000 		.4byte	.LASF14
+ 205 00a2 05       		.uleb128 0x5
+ 206 00a3 27010000 		.4byte	.LASF15
+ 207 00a7 04       		.byte	0x4
+ 208 00a8 3C02     		.2byte	0x23c
+ 209 00aa AE000000 		.4byte	0xae
+ 210 00ae 06       		.uleb128 0x6
+ 211 00af 81000000 		.4byte	0x81
+ 212 00b3 02       		.uleb128 0x2
+ 213 00b4 04       		.byte	0x4
+ 214 00b5 07       		.byte	0x7
+ 215 00b6 C1010000 		.4byte	.LASF16
+ 216 00ba 07       		.uleb128 0x7
+ 217 00bb 3B000000 		.4byte	.LASF17
+ 218 00bf 01       		.byte	0x1
+ 219 00c0 15       		.byte	0x15
+ 220 00c1 68000000 		.4byte	0x68
+ 221 00c5 00000000 		.4byte	.LFB63
+ 222 00c9 30000000 		.4byte	.LFE63-.LFB63
+ 223 00cd 01       		.uleb128 0x1
+ 224 00ce 9C       		.byte	0x9c
+ 225 00cf ED000000 		.4byte	0xed
+ 226 00d3 08       		.uleb128 0x8
+ 227 00d4 08000000 		.4byte	.LVL0
+ 228 00d8 30010000 		.4byte	0x130
+ 229 00dc 09       		.uleb128 0x9
+ 230 00dd 26000000 		.4byte	.LVL1
+ 231 00e1 37010000 		.4byte	0x137
+ 232 00e5 0A       		.uleb128 0xa
+ 233 00e6 01       		.uleb128 0x1
+ 234 00e7 50       		.byte	0x50
+ 235 00e8 02       		.uleb128 0x2
+ 236 00e9 09       		.byte	0x9
+ARM GAS  C:\Users\LAIR\AppData\Local\Temp\ccTGb53m.s 			page 6
+
+
+ 237 00ea D1       		.byte	0xd1
+ 238 00eb 00       		.byte	0
+ 239 00ec 00       		.byte	0
+ 240 00ed 0B       		.uleb128 0xb
+ 241 00ee 2E000000 		.4byte	.LASF18
+ 242 00f2 01       		.byte	0x1
+ 243 00f3 2C       		.byte	0x2c
+ 244 00f4 00000000 		.4byte	.LFB64
+ 245 00f8 24000000 		.4byte	.LFE64-.LFB64
+ 246 00fc 01       		.uleb128 0x1
+ 247 00fd 9C       		.byte	0x9c
+ 248 00fe 10010000 		.4byte	0x110
+ 249 0102 0C       		.uleb128 0xc
+ 250 0103 76616C00 		.ascii	"val\000"
+ 251 0107 01       		.byte	0x1
+ 252 0108 2C       		.byte	0x2c
+ 253 0109 9B000000 		.4byte	0x9b
+ 254 010d 01       		.uleb128 0x1
+ 255 010e 50       		.byte	0x50
+ 256 010f 00       		.byte	0
+ 257 0110 0D       		.uleb128 0xd
+ 258 0111 79010000 		.4byte	.LASF19
+ 259 0115 05       		.byte	0x5
+ 260 0116 9606     		.2byte	0x696
+ 261 0118 1C010000 		.4byte	0x11c
+ 262 011c 06       		.uleb128 0x6
+ 263 011d 76000000 		.4byte	0x76
+ 264 0121 0E       		.uleb128 0xe
+ 265 0122 6900     		.ascii	"i\000"
+ 266 0124 01       		.byte	0x1
+ 267 0125 13       		.byte	0x13
+ 268 0126 68000000 		.4byte	0x68
+ 269 012a 05       		.uleb128 0x5
+ 270 012b 03       		.byte	0x3
+ 271 012c 00000000 		.4byte	i
+ 272 0130 0F       		.uleb128 0xf
+ 273 0131 9C010000 		.4byte	.LASF23
+ 274 0135 06       		.byte	0x6
+ 275 0136 92       		.byte	0x92
+ 276 0137 10       		.uleb128 0x10
+ 277 0138 B0010000 		.4byte	.LASF24
+ 278 013c 06       		.byte	0x6
+ 279 013d C3       		.byte	0xc3
+ 280 013e 11       		.uleb128 0x11
+ 281 013f 81000000 		.4byte	0x81
+ 282 0143 00       		.byte	0
+ 283 0144 00       		.byte	0
+ 284              		.section	.debug_abbrev,"",%progbits
+ 285              	.Ldebug_abbrev0:
+ 286 0000 01       		.uleb128 0x1
+ 287 0001 11       		.uleb128 0x11
+ 288 0002 01       		.byte	0x1
+ 289 0003 25       		.uleb128 0x25
+ 290 0004 0E       		.uleb128 0xe
+ 291 0005 13       		.uleb128 0x13
+ 292 0006 0B       		.uleb128 0xb
+ 293 0007 03       		.uleb128 0x3
+ARM GAS  C:\Users\LAIR\AppData\Local\Temp\ccTGb53m.s 			page 7
+
+
+ 294 0008 0E       		.uleb128 0xe
+ 295 0009 1B       		.uleb128 0x1b
+ 296 000a 0E       		.uleb128 0xe
+ 297 000b 55       		.uleb128 0x55
+ 298 000c 17       		.uleb128 0x17
+ 299 000d 11       		.uleb128 0x11
+ 300 000e 01       		.uleb128 0x1
+ 301 000f 10       		.uleb128 0x10
+ 302 0010 17       		.uleb128 0x17
+ 303 0011 00       		.byte	0
+ 304 0012 00       		.byte	0
+ 305 0013 02       		.uleb128 0x2
+ 306 0014 24       		.uleb128 0x24
+ 307 0015 00       		.byte	0
+ 308 0016 0B       		.uleb128 0xb
+ 309 0017 0B       		.uleb128 0xb
+ 310 0018 3E       		.uleb128 0x3e
+ 311 0019 0B       		.uleb128 0xb
+ 312 001a 03       		.uleb128 0x3
+ 313 001b 0E       		.uleb128 0xe
+ 314 001c 00       		.byte	0
+ 315 001d 00       		.byte	0
+ 316 001e 03       		.uleb128 0x3
+ 317 001f 16       		.uleb128 0x16
+ 318 0020 00       		.byte	0
+ 319 0021 03       		.uleb128 0x3
+ 320 0022 0E       		.uleb128 0xe
+ 321 0023 3A       		.uleb128 0x3a
+ 322 0024 0B       		.uleb128 0xb
+ 323 0025 3B       		.uleb128 0x3b
+ 324 0026 0B       		.uleb128 0xb
+ 325 0027 49       		.uleb128 0x49
+ 326 0028 13       		.uleb128 0x13
+ 327 0029 00       		.byte	0
+ 328 002a 00       		.byte	0
+ 329 002b 04       		.uleb128 0x4
+ 330 002c 24       		.uleb128 0x24
+ 331 002d 00       		.byte	0
+ 332 002e 0B       		.uleb128 0xb
+ 333 002f 0B       		.uleb128 0xb
+ 334 0030 3E       		.uleb128 0x3e
+ 335 0031 0B       		.uleb128 0xb
+ 336 0032 03       		.uleb128 0x3
+ 337 0033 08       		.uleb128 0x8
+ 338 0034 00       		.byte	0
+ 339 0035 00       		.byte	0
+ 340 0036 05       		.uleb128 0x5
+ 341 0037 16       		.uleb128 0x16
+ 342 0038 00       		.byte	0
+ 343 0039 03       		.uleb128 0x3
+ 344 003a 0E       		.uleb128 0xe
+ 345 003b 3A       		.uleb128 0x3a
+ 346 003c 0B       		.uleb128 0xb
+ 347 003d 3B       		.uleb128 0x3b
+ 348 003e 05       		.uleb128 0x5
+ 349 003f 49       		.uleb128 0x49
+ 350 0040 13       		.uleb128 0x13
+ARM GAS  C:\Users\LAIR\AppData\Local\Temp\ccTGb53m.s 			page 8
+
+
+ 351 0041 00       		.byte	0
+ 352 0042 00       		.byte	0
+ 353 0043 06       		.uleb128 0x6
+ 354 0044 35       		.uleb128 0x35
+ 355 0045 00       		.byte	0
+ 356 0046 49       		.uleb128 0x49
+ 357 0047 13       		.uleb128 0x13
+ 358 0048 00       		.byte	0
+ 359 0049 00       		.byte	0
+ 360 004a 07       		.uleb128 0x7
+ 361 004b 2E       		.uleb128 0x2e
+ 362 004c 01       		.byte	0x1
+ 363 004d 3F       		.uleb128 0x3f
+ 364 004e 19       		.uleb128 0x19
+ 365 004f 03       		.uleb128 0x3
+ 366 0050 0E       		.uleb128 0xe
+ 367 0051 3A       		.uleb128 0x3a
+ 368 0052 0B       		.uleb128 0xb
+ 369 0053 3B       		.uleb128 0x3b
+ 370 0054 0B       		.uleb128 0xb
+ 371 0055 49       		.uleb128 0x49
+ 372 0056 13       		.uleb128 0x13
+ 373 0057 11       		.uleb128 0x11
+ 374 0058 01       		.uleb128 0x1
+ 375 0059 12       		.uleb128 0x12
+ 376 005a 06       		.uleb128 0x6
+ 377 005b 40       		.uleb128 0x40
+ 378 005c 18       		.uleb128 0x18
+ 379 005d 9742     		.uleb128 0x2117
+ 380 005f 19       		.uleb128 0x19
+ 381 0060 01       		.uleb128 0x1
+ 382 0061 13       		.uleb128 0x13
+ 383 0062 00       		.byte	0
+ 384 0063 00       		.byte	0
+ 385 0064 08       		.uleb128 0x8
+ 386 0065 898201   		.uleb128 0x4109
+ 387 0068 00       		.byte	0
+ 388 0069 11       		.uleb128 0x11
+ 389 006a 01       		.uleb128 0x1
+ 390 006b 31       		.uleb128 0x31
+ 391 006c 13       		.uleb128 0x13
+ 392 006d 00       		.byte	0
+ 393 006e 00       		.byte	0
+ 394 006f 09       		.uleb128 0x9
+ 395 0070 898201   		.uleb128 0x4109
+ 396 0073 01       		.byte	0x1
+ 397 0074 11       		.uleb128 0x11
+ 398 0075 01       		.uleb128 0x1
+ 399 0076 31       		.uleb128 0x31
+ 400 0077 13       		.uleb128 0x13
+ 401 0078 00       		.byte	0
+ 402 0079 00       		.byte	0
+ 403 007a 0A       		.uleb128 0xa
+ 404 007b 8A8201   		.uleb128 0x410a
+ 405 007e 00       		.byte	0
+ 406 007f 02       		.uleb128 0x2
+ 407 0080 18       		.uleb128 0x18
+ARM GAS  C:\Users\LAIR\AppData\Local\Temp\ccTGb53m.s 			page 9
+
+
+ 408 0081 9142     		.uleb128 0x2111
+ 409 0083 18       		.uleb128 0x18
+ 410 0084 00       		.byte	0
+ 411 0085 00       		.byte	0
+ 412 0086 0B       		.uleb128 0xb
+ 413 0087 2E       		.uleb128 0x2e
+ 414 0088 01       		.byte	0x1
+ 415 0089 3F       		.uleb128 0x3f
+ 416 008a 19       		.uleb128 0x19
+ 417 008b 03       		.uleb128 0x3
+ 418 008c 0E       		.uleb128 0xe
+ 419 008d 3A       		.uleb128 0x3a
+ 420 008e 0B       		.uleb128 0xb
+ 421 008f 3B       		.uleb128 0x3b
+ 422 0090 0B       		.uleb128 0xb
+ 423 0091 27       		.uleb128 0x27
+ 424 0092 19       		.uleb128 0x19
+ 425 0093 11       		.uleb128 0x11
+ 426 0094 01       		.uleb128 0x1
+ 427 0095 12       		.uleb128 0x12
+ 428 0096 06       		.uleb128 0x6
+ 429 0097 40       		.uleb128 0x40
+ 430 0098 18       		.uleb128 0x18
+ 431 0099 9742     		.uleb128 0x2117
+ 432 009b 19       		.uleb128 0x19
+ 433 009c 01       		.uleb128 0x1
+ 434 009d 13       		.uleb128 0x13
+ 435 009e 00       		.byte	0
+ 436 009f 00       		.byte	0
+ 437 00a0 0C       		.uleb128 0xc
+ 438 00a1 05       		.uleb128 0x5
+ 439 00a2 00       		.byte	0
+ 440 00a3 03       		.uleb128 0x3
+ 441 00a4 08       		.uleb128 0x8
+ 442 00a5 3A       		.uleb128 0x3a
+ 443 00a6 0B       		.uleb128 0xb
+ 444 00a7 3B       		.uleb128 0x3b
+ 445 00a8 0B       		.uleb128 0xb
+ 446 00a9 49       		.uleb128 0x49
+ 447 00aa 13       		.uleb128 0x13
+ 448 00ab 02       		.uleb128 0x2
+ 449 00ac 18       		.uleb128 0x18
+ 450 00ad 00       		.byte	0
+ 451 00ae 00       		.byte	0
+ 452 00af 0D       		.uleb128 0xd
+ 453 00b0 34       		.uleb128 0x34
+ 454 00b1 00       		.byte	0
+ 455 00b2 03       		.uleb128 0x3
+ 456 00b3 0E       		.uleb128 0xe
+ 457 00b4 3A       		.uleb128 0x3a
+ 458 00b5 0B       		.uleb128 0xb
+ 459 00b6 3B       		.uleb128 0x3b
+ 460 00b7 05       		.uleb128 0x5
+ 461 00b8 49       		.uleb128 0x49
+ 462 00b9 13       		.uleb128 0x13
+ 463 00ba 3F       		.uleb128 0x3f
+ 464 00bb 19       		.uleb128 0x19
+ARM GAS  C:\Users\LAIR\AppData\Local\Temp\ccTGb53m.s 			page 10
+
+
+ 465 00bc 3C       		.uleb128 0x3c
+ 466 00bd 19       		.uleb128 0x19
+ 467 00be 00       		.byte	0
+ 468 00bf 00       		.byte	0
+ 469 00c0 0E       		.uleb128 0xe
+ 470 00c1 34       		.uleb128 0x34
+ 471 00c2 00       		.byte	0
+ 472 00c3 03       		.uleb128 0x3
+ 473 00c4 08       		.uleb128 0x8
+ 474 00c5 3A       		.uleb128 0x3a
+ 475 00c6 0B       		.uleb128 0xb
+ 476 00c7 3B       		.uleb128 0x3b
+ 477 00c8 0B       		.uleb128 0xb
+ 478 00c9 49       		.uleb128 0x49
+ 479 00ca 13       		.uleb128 0x13
+ 480 00cb 3F       		.uleb128 0x3f
+ 481 00cc 19       		.uleb128 0x19
+ 482 00cd 02       		.uleb128 0x2
+ 483 00ce 18       		.uleb128 0x18
+ 484 00cf 00       		.byte	0
+ 485 00d0 00       		.byte	0
+ 486 00d1 0F       		.uleb128 0xf
+ 487 00d2 2E       		.uleb128 0x2e
+ 488 00d3 00       		.byte	0
+ 489 00d4 3F       		.uleb128 0x3f
+ 490 00d5 19       		.uleb128 0x19
+ 491 00d6 03       		.uleb128 0x3
+ 492 00d7 0E       		.uleb128 0xe
+ 493 00d8 3A       		.uleb128 0x3a
+ 494 00d9 0B       		.uleb128 0xb
+ 495 00da 3B       		.uleb128 0x3b
+ 496 00db 0B       		.uleb128 0xb
+ 497 00dc 27       		.uleb128 0x27
+ 498 00dd 19       		.uleb128 0x19
+ 499 00de 3C       		.uleb128 0x3c
+ 500 00df 19       		.uleb128 0x19
+ 501 00e0 00       		.byte	0
+ 502 00e1 00       		.byte	0
+ 503 00e2 10       		.uleb128 0x10
+ 504 00e3 2E       		.uleb128 0x2e
+ 505 00e4 01       		.byte	0x1
+ 506 00e5 3F       		.uleb128 0x3f
+ 507 00e6 19       		.uleb128 0x19
+ 508 00e7 03       		.uleb128 0x3
+ 509 00e8 0E       		.uleb128 0xe
+ 510 00e9 3A       		.uleb128 0x3a
+ 511 00ea 0B       		.uleb128 0xb
+ 512 00eb 3B       		.uleb128 0x3b
+ 513 00ec 0B       		.uleb128 0xb
+ 514 00ed 27       		.uleb128 0x27
+ 515 00ee 19       		.uleb128 0x19
+ 516 00ef 3C       		.uleb128 0x3c
+ 517 00f0 19       		.uleb128 0x19
+ 518 00f1 00       		.byte	0
+ 519 00f2 00       		.byte	0
+ 520 00f3 11       		.uleb128 0x11
+ 521 00f4 05       		.uleb128 0x5
+ARM GAS  C:\Users\LAIR\AppData\Local\Temp\ccTGb53m.s 			page 11
+
+
+ 522 00f5 00       		.byte	0
+ 523 00f6 49       		.uleb128 0x49
+ 524 00f7 13       		.uleb128 0x13
+ 525 00f8 00       		.byte	0
+ 526 00f9 00       		.byte	0
+ 527 00fa 00       		.byte	0
+ 528              		.section	.debug_aranges,"",%progbits
+ 529 0000 24000000 		.4byte	0x24
+ 530 0004 0200     		.2byte	0x2
+ 531 0006 00000000 		.4byte	.Ldebug_info0
+ 532 000a 04       		.byte	0x4
+ 533 000b 00       		.byte	0
+ 534 000c 0000     		.2byte	0
+ 535 000e 0000     		.2byte	0
+ 536 0010 00000000 		.4byte	.LFB63
+ 537 0014 30000000 		.4byte	.LFE63-.LFB63
+ 538 0018 00000000 		.4byte	.LFB64
+ 539 001c 24000000 		.4byte	.LFE64-.LFB64
+ 540 0020 00000000 		.4byte	0
+ 541 0024 00000000 		.4byte	0
+ 542              		.section	.debug_ranges,"",%progbits
+ 543              	.Ldebug_ranges0:
+ 544 0000 00000000 		.4byte	.LFB63
+ 545 0004 30000000 		.4byte	.LFE63
+ 546 0008 00000000 		.4byte	.LFB64
+ 547 000c 24000000 		.4byte	.LFE64
+ 548 0010 00000000 		.4byte	0
+ 549 0014 00000000 		.4byte	0
+ 550              		.section	.debug_line,"",%progbits
+ 551              	.Ldebug_line0:
+ 552 0000 8D010000 		.section	.debug_str,"MS",%progbits,1
+ 552      02005201 
+ 552      00000201 
+ 552      FB0E0D00 
+ 552      01010101 
+ 553              	.LASF6:
+ 554 0000 6C6F6E67 		.ascii	"long long int\000"
+ 554      206C6F6E 
+ 554      6720696E 
+ 554      7400
+ 555              	.LASF3:
+ 556 000e 73686F72 		.ascii	"short unsigned int\000"
+ 556      7420756E 
+ 556      7369676E 
+ 556      65642069 
+ 556      6E7400
+ 557              	.LASF8:
+ 558 0021 756E7369 		.ascii	"unsigned int\000"
+ 558      676E6564 
+ 558      20696E74 
+ 558      00
+ 559              	.LASF18:
+ 560 002e 64696769 		.ascii	"digitalWrite\000"
+ 560      74616C57 
+ 560      72697465 
+ 560      00
+ 561              	.LASF17:
+ARM GAS  C:\Users\LAIR\AppData\Local\Temp\ccTGb53m.s 			page 12
+
+
+ 562 003b 6D61696E 		.ascii	"main\000"
+ 562      00
+ 563              	.LASF11:
+ 564 0040 75696E74 		.ascii	"uint8\000"
+ 564      3800
+ 565              	.LASF10:
+ 566 0046 696E7433 		.ascii	"int32_t\000"
+ 566      325F7400 
+ 567              	.LASF5:
+ 568 004e 6C6F6E67 		.ascii	"long unsigned int\000"
+ 568      20756E73 
+ 568      69676E65 
+ 568      6420696E 
+ 568      7400
+ 569              	.LASF21:
+ 570 0060 2E5C6D61 		.ascii	".\\main.c\000"
+ 570      696E2E63 
+ 570      00
+ 571              	.LASF7:
+ 572 0069 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 572      206C6F6E 
+ 572      6720756E 
+ 572      7369676E 
+ 572      65642069 
+ 573              	.LASF12:
+ 574 0080 666C6F61 		.ascii	"float\000"
+ 574      7400
+ 575              	.LASF20:
+ 576 0086 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 576      4320342E 
+ 576      392E3320 
+ 576      32303135 
+ 576      30333033 
+ 577 00b9 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
+ 577      20726576 
+ 577      6973696F 
+ 577      6E203232 
+ 577      31323230 
+ 578 00ec 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 578      66756E63 
+ 578      74696F6E 
+ 578      2D736563 
+ 578      74696F6E 
+ 579              	.LASF1:
+ 580 0114 756E7369 		.ascii	"unsigned char\000"
+ 580      676E6564 
+ 580      20636861 
+ 580      7200
+ 581              	.LASF14:
+ 582 0122 63686172 		.ascii	"char\000"
+ 582      00
+ 583              	.LASF15:
+ 584 0127 72656738 		.ascii	"reg8\000"
+ 584      00
+ 585              	.LASF22:
+ 586 012c 433A5C55 		.ascii	"C:\\Users\\LAIR\\Documents\\PSoC Creator\\LED_Test\\"
+ 586      73657273 
+ARM GAS  C:\Users\LAIR\AppData\Local\Temp\ccTGb53m.s 			page 13
+
+
+ 586      5C4C4149 
+ 586      525C446F 
+ 586      63756D65 
+ 587 015a 5475746F 		.ascii	"Tutorial.cydsn\000"
+ 587      7269616C 
+ 587      2E637964 
+ 587      736E00
+ 588              	.LASF13:
+ 589 0169 646F7562 		.ascii	"double\000"
+ 589      6C6500
+ 590              	.LASF4:
+ 591 0170 6C6F6E67 		.ascii	"long int\000"
+ 591      20696E74 
+ 591      00
+ 592              	.LASF19:
+ 593 0179 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 593      52784275 
+ 593      66666572 
+ 593      00
+ 594              	.LASF0:
+ 595 0186 7369676E 		.ascii	"signed char\000"
+ 595      65642063 
+ 595      68617200 
+ 596              	.LASF9:
+ 597 0192 5F5F696E 		.ascii	"__int32_t\000"
+ 597      7433325F 
+ 597      7400
+ 598              	.LASF23:
+ 599 019c 50574D5F 		.ascii	"PWM_Start\000"
+ 599      53746172 
+ 599      7400
+ 600              	.LASF2:
+ 601 01a6 73686F72 		.ascii	"short int\000"
+ 601      7420696E 
+ 601      7400
+ 602              	.LASF24:
+ 603 01b0 50574D5F 		.ascii	"PWM_WriteCompare\000"
+ 603      57726974 
+ 603      65436F6D 
+ 603      70617265 
+ 603      00
+ 604              	.LASF16:
+ 605 01c1 73697A65 		.ascii	"sizetype\000"
+ 605      74797065 
+ 605      00
+ 606              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

@@ -1,0 +1,6 @@
+C:\Users\LAIR\Documents\PSoC Creator\LED_Test\Tutorial.cydsn\Tutorial.cyprj|dea50397-ac1c-4ff2-9812-2267266e1543
+C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|b8f7d68c-eabb-4f72-8cbe-7fcc2bdb48da
+C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|8bf9f5b0-583b-436f-97fe-9f910941524f
+C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|89ce6b1f-b946-4b1c-978b-89275e2911c1
+C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|629c7697-81fb-41c3-9cff-066fc8631032
+C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\dev\psoc3\AnalogDevice\PSoC35AnalogDevice.cylib\PSoC35AnalogDevice.cyprj|098b7523-a98e-4cb5-bfcb-21c33c8f3af5
